@@ -1,0 +1,8 @@
+# DNS Relay 本地域名数据库
+# 格式: IP domain
+# IP 为 0.0.0.0 表示屏蔽该域名（返回 NXDOMAIN）
+
+0.0.0.0 blocked.com
+1.2.3.4 local.test.com
+0.0.0.0 www.666.com
+114.255.40.66 www.bupt.com.cn
