@@ -7,7 +7,7 @@
 1. 启动 DNS Relay：
 
 ```bash
-cd /Applications/School/xxq2.0
+cd "/Applications/School/xxq2.0/Real Code"
 python3 dnsrelay.py
 ```
 
