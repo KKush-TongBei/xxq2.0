@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# 课件标准入口：dnsrelay [-d | -dd] [dns-server-ipaddr] [filename]
+DIR="$(cd "$(dirname "$0")" && pwd)"
+exec python3 "$DIR/dnsrelay.py" "$@"
