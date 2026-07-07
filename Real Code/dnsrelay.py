@@ -42,6 +42,7 @@ class DNSConstants:
     RCODE_NXDOMAIN = 3
 
     FLAG_QR = 0x8000
+    FLAG_RA = 0x0080       # bit7: Recursion Available
     FLAG_RCODE_MASK = 0x000F
 
     HEADER_SIZE = 12
@@ -259,13 +260,14 @@ class DNSCodec:
         构造响应 Header。
 
         flags 典型值:
-          0x8180 = QR=1, RD=1, RCODE=0 (NOERROR)
-          0x8183 = QR=1, RD=1, RCODE=3 (NXDOMAIN)
-          0x8182 = QR=1, RD=1, RCODE=2 (SERVFAIL)
+          0x8180 = QR=1, RD=1, RA=1, RCODE=0 (NOERROR)
+          0x8183 = QR=1, RD=1, RA=1, RCODE=3 (NXDOMAIN)
+          0x8182 = QR=1, RD=1, RA=1, RCODE=2 (SERVFAIL)
         """
         flags = DNSConstants.FLAG_QR
         if rd:
-            flags |= 0x0100
+            flags |= 0x0100  # RD 位
+        flags |= DNSConstants.FLAG_RA  # RA = 1，表示支持递归
         flags |= rcode & DNSConstants.FLAG_RCODE_MASK
 
         header = DNSHeader(
